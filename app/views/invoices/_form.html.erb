@@ -1,0 +1,58 @@
+<%= form_with(model: invoice) do |form| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+        <% invoice.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company %>
+    <%= form.text_field :company %>
+  </div>
+
+  <div class="field">
+    <%= form.label :billed_to %>
+    <%= form.text_field :billed_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_value %>
+    <%= form.text_field :total_value %>
+  </div>
+
+  <%= form.fields_for :invoice_emails do |form_ie| %>
+    <div id="fieldsetContainer">
+      <fieldset id="0">
+        <%= form.label :email %>
+        <%= form_ie.email_field :email %>
+      </fieldset>
+    </div>
+  <% end %>
+
+  <!--div class="field">
+    <%#= form.label :emails %>
+    <%#= form.text_field :emails %>
+  </div-->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<p><button id="addInvoiceEmail">Add more emails</button></p>

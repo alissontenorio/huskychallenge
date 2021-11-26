@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Login</h1>
+
+<%= form_with url: auth_path, method: :get do |form| %>
+  <%= form.label :id, "Token" %>
+  <%= form.text_field :id %>
+  <%= form.submit "Login" %>
+<% end -%>
+
+<p> 
+  <%= link_to 'Back', root_path %> 
+</p>

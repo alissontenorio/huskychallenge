@@ -1,0 +1,22 @@
+<div class="invoice">
+  <h1>Invoice</h1>
+ 
+  <h3>Billed to: <%= @invoice.billed_to %></h3>
+  <h3>Date: <%= @invoice.date.strftime("%d, %B %Y") %></h3>
+ 
+  <p><strong>Number: </strong><%= @invoice.number %></p>
+  <p><strong>Company: </strong><%= @invoice.company %></p>
+  <p>
+    <strong>Emails: </strong>
+    <% @invoice.invoice_emails.each do |invoice_email| %>
+      <%= invoice_email.email %>
+    <% end %>
+  </p>
+  
+  <p>
+    <h2>
+      <td style="text-align: right">Total: </td>
+      <td> <%= @invoice.total_value %> </td>
+    </h2>
+  </p>
+</div>

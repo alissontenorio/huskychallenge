@@ -1,0 +1,24 @@
+<h1> Generate Token </h1>
+
+<%= form_with model:@user do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form.label :email, "Email" %>
+  <%= form.email_field :email %>
+  <%= form.submit "Create user" %>
+<% end %>
+
+<p> 
+  <%= link_to 'Back', root_path %> 
+</p>
+

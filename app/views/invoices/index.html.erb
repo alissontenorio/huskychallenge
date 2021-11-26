@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<p id="alert">Only the first email is displayed here</p>
+
+<h1>Invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Date</th>
+      <th>Company</th>
+      <th>Billed to</th>
+      <th>Total value</th>      
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.number %></td>
+        <td><%= invoice.date %></td>
+        <td><%= invoice.company %></td>
+        <td><%= invoice.billed_to %></td>
+        <td><%= invoice.total_value %></td>
+        <td><%= invoice.invoice_emails.first.email %> </td>
+        <td><%= link_to 'Show', invoice %></td>
+        <td><%= link_to 'Send invoice by email', send_email_invoice_path(invoice) %></td>
+        <td>
+          <%= link_to "Download PDF", invoice_download_path(invoice, format: "pdf"),
+                      target: "_blank", class: "download" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p><%= link_to 'New Invoice', new_invoice_path %></p>
+<p><%= link_to 'Logout', auth_log_out_path %></p>

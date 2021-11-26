@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<%#= link_to 'Edit', edit_invoice_path(@invoice) %> 
+
+<div class="invoice">
+  <h1>Invoice</h1>
+ 
+  <h3>Billed to: <%= @invoice.billed_to %></h3>
+  <h3>Date: <%= @invoice.date.strftime("%B %d, %Y") %></h3>
+ 
+  <table>
+    <thead>
+        <tr>
+          <th>Number</th>
+          <th>Company</th>
+          <% @invoice.invoice_emails.each do |invoice_email| %>
+            <th>Email</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @invoice.number %></td>
+          <td><%= @invoice.company %></td>
+          <% @invoice.invoice_emails.each do |invoice_email| %>
+            <td> <%= invoice_email.email %> </td>
+          <% end %>
+        </tr>
+        <tr class="total">
+          <td style="text-align: right">Total: </td>
+          <td><%= @invoice.total_value %></span></td>
+        </tr>
+      </tbody>
+  </table>
+ 
+  <!--div class="notes">
+    <p><strong>Date:</strong> <%= @invoice.date %></p>
+  </div-->
+</div>
+
+<p><%= link_to "Download PDF",
+  invoice_download_path(@invoice, format: "pdf"),
+  target: "_blank",
+  class: "download" %></p>
+
+<p><%= link_to 'Send invoice by email', send_email_invoice_path(@invoice) %></p>
+
+<p><%= link_to 'Back', invoices_path %></p>

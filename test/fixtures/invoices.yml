@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  date: 2021-11-23
+  company: MyString
+  billed_to: MyString
+  total_value: 1.5
+  emails: 
+
+two:
+  number: MyString
+  date: 2021-11-23
+  company: MyString
+  billed_to: MyString
+  total_value: 1.5
+  emails: 
