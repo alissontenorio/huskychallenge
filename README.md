@@ -43,6 +43,7 @@ Futuras melhorias:
 - Implantar bootstrap
 - Retirar senhas do .env e colocar no rails credentials
 - Criar validações para o form e nos campos do model de Invoice
+- Modularizar melhor os domínios
 
 Stack:
 
